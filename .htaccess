@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^cart/$ cart.php
+RewriteRule ^order/$ order.php
+
+RewriteRule ^(hookah|tabac|coal|components|accessories)/$ $1.php?page=$1
+RewriteRule ^(hookah|tabac|coal|components|accessories)/([0-9]+)/ $1.php?page=$1&id=$2
+
+RewriteCond %{REQUEST_URI} !/(order|cart|404|hookah|tabac|coal|components|accessories).php
+RewriteCond %{REQUEST_URI} .+\.(php|html|json)$
+#RewriteRule .+ index.php
+
+ErrorDocument 404 /404.php
